@@ -26,7 +26,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/add")
-    public String add(Integer a, Integer b) {
+    public String add(String a, String b) {
         return indexService.add(a, b);
     }
 

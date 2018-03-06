@@ -10,8 +10,8 @@ public class ProviderFeignClientHystrixFallback implements ProviderFeignClient {
     public static final Logger LOG = LoggerFactory.getLogger(ProviderFeignClientHystrixFallback.class);
 
     @Override
-    public String add(Integer a, Integer b) {
-        LOG.error("ProviderFeignClient.add({},{}) connected timeout!", a, b);
+    public String add(String a, String b) {
+        LOG.error(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ProviderFeignClient.add({},{}) connected timeout!", a, b);
         return "Connect timeout!";
     }
 }
