@@ -11,11 +11,6 @@ public class IndexController {
     @RequestMapping(value = "/add", method = {RequestMethod.GET})
     public String add(@RequestParam("a") String a, @RequestParam("b") String b) {
         System.out.println(">>>>>>>>>>>>>>>IndexController execute");
-        try {
-            Thread.sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return "a=" + a + ",b=" + b;
     }
 }

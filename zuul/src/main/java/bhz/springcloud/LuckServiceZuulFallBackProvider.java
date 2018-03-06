@@ -1,6 +1,6 @@
 package bhz.springcloud;
 
-import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,33 +12,27 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 指定断熔某个服务, 自定义响应信息内容
+ * @author YaoGang
+ * @ClassName: LuckServiceZuulFallBackProvider
+ * @Description: (指定断熔某个服务, 自定义响应信息内容)
+ * @date 2018/3/6 15:30
  */
 @Component
-public class LuckServiceZuulFallBackProvider implements ZuulFallbackProvider {
-    /**
-     * 指定要断熔的服务的名字: appName
-     *
-     * @return
-     */
-    @Override
-    public String getRoute() {
-        return "luck-service";
-    }
+public class LuckServiceZuulFallBackProvider implements FallbackProvider {
 
     @Override
-    public ClientHttpResponse fallbackResponse() {
+    public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
         return new ClientHttpResponse() {
             // 自定义响应的状态
             @Override
             public HttpStatus getStatusCode() throws IOException {
-                return HttpStatus.BAD_REQUEST; //400
+                return HttpStatus.BAD_REQUEST;
             }
 
             // 自定义响应的状态码
             @Override
             public int getRawStatusCode() throws IOException {
-                return this.getStatusCode().value(); //400
+                return this.getStatusCode().value();
             }
 
             // 状态文本信息
@@ -66,4 +60,15 @@ public class LuckServiceZuulFallBackProvider implements ZuulFallbackProvider {
             }
         };
     }
+
+    /**
+     * 指定要断熔的服务的名字: appName
+     *
+     * @return
+     */
+    @Override
+    public String getRoute() {
+        return "web";
+    }
+
 }
