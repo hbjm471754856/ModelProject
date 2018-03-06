@@ -51,6 +51,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 主函数的入口 -->
+                    <mainClass>com.cr.eurekaserver.EurekaServerApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

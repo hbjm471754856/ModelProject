@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.cr.core.vo.UserVO;
+import com.example.demo.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +11,9 @@ import java.util.Date;
 
 @RestController
 public class IndexController {
+
+    @Autowired
+    private IndexService indexService;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -18,6 +23,11 @@ public class IndexController {
         userVO.setSex(1);
         userVO.setBirthDay(new Date());
         return JSON.toJSONString(userVO);
+    }
+
+    @RequestMapping(value = "/add")
+    public String add(Integer a, Integer b) {
+        return indexService.add(a, b);
     }
 
 }

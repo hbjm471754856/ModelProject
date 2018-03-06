@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
-        return a + b;
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
+    public String add(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
+        return String.valueOf(a + b);
     }
 }
