@@ -13,12 +13,12 @@ import java.io.InputStream;
 
 /**
  * @author YaoGang
- * @ClassName: LuckServiceZuulFallBackProvider
+ * @ClassName: ProviderZuulFallBackProvider
  * @Description: (指定断熔某个服务, 自定义响应信息内容)
  * @date 2018/3/6 15:30
  */
 @Component
-public class LuckServiceZuulFallBackProvider implements FallbackProvider {
+public class ProviderZuulFallBackProvider implements FallbackProvider {
 
     @Override
     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
@@ -68,7 +68,7 @@ public class LuckServiceZuulFallBackProvider implements FallbackProvider {
      */
     @Override
     public String getRoute() {
-        return "web";
+        return "provider";
     }
 
 }
